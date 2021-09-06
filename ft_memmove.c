@@ -7,7 +7,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	if (dst == NULL && src == NULL)
 		return (NULL);
 	tmp = (char *) malloc(sizeof(char) * len);
-	if (tmp == NULL);
+	if (tmp == NULL)
 		return (NULL);
 	ft_memcpy(tmp, src, len);
 	ft_memcpy(dst, tmp, len);
