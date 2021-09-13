@@ -2,9 +2,12 @@
 
 char	*ft_strdup(const char *s1)
 {
+	size_t	len;
 	char	*dup;
 
-	dup = (char *) malloc(sizeof(s1) + 1);
-	ft_strlcpy(dup, s1, sizeof(s1) + 1);
-	return (dup);
+	len = ft_strlen(s1) + 1;
+	dup = (char *) malloc(len);
+	if (!dup)
+		return (NULL);
+	return (char *) ft_memcpy(dup, s1, len);
 }
