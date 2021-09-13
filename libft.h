@@ -3,6 +3,20 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# define IS_WSPACE(c) (c==' '||c=='\t'||c=='\n'||c=='\r'||c=='\f'||c=='\v')
+# define CHECK_PTR_DEF(ptr, def) if (!(ptr)) return (def);
+# define CHECK_PTR(ptr) CHECK_PTR_DEF(ptr, NULL);
+# define CHECK_PTR_EMPTY(ptr) if (!(ptr)) return ;
+# define CHECK_MALLOC(var, size) CHECK_PTR((var = malloc(size)))
+# define MIN(a, b) (((a) < (b)) ? (a) : (b))
+# define MAX(a, b) (((a) > (b)) ? (a) : (b))
+
+typedef struct		s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
 int ft_atoi(const char *str);
 void ft_bzero(void *s, size_t n);
 void *ft_calloc(size_t nmemb, size_t size);
