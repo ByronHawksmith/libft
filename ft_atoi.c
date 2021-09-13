@@ -19,32 +19,28 @@ static int	ft_long_border(const char c, int mult, unsigned long nb)
 
 int	ft_atoi(const char *str)
 {
-	int				i;
 	int				mult;
 	unsigned long	nb;
 	int				brd;
 
-	i = 0;
 	mult = 1;
 	nb = 0;
 	brd = 1;
-	while (ft_isspace(str[i]))
-		i++;
-	while (str[i] == '-' || str[i] == '+')
+	while (ft_isspace(*str))
+		str++;
+	while (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			mult *= -1;
-		i++;
+		str++;
 	}
-	while (ft_isdigit(str[i]))
+	while (ft_isdigit(*str))
 	{
-		brd = ft_long_border(str[i], mult, nb);
+		brd = ft_long_border(*str, mult, nb);
 		if (brd < 1)
 			return (brd);
-		nb *= 10;
-		nb += str[i] - '0';
+		nb = (nb * 10) + (*str - '0');
 		i++;
 	}
-	nb *= mult;
-	return (nb);
+	return (nb * mult);
 }

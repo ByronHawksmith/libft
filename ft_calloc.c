@@ -2,8 +2,8 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void *arr;
-	size_t req;
+	void	*arr;
+	size_t	req;
 
 	req = count * size;
 	CHECK_MALLOC(arr, req);

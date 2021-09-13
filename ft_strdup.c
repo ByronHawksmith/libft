@@ -9,5 +9,5 @@ char	*ft_strdup(const char *s1)
 	dup = (char *) malloc(len);
 	if (!dup)
 		return (NULL);
-	return (char *) ft_memcpy(dup, s1, len);
+	return ((char *) ft_memcpy(dup, s1, len));
 }
