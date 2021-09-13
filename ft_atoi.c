@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 		if (brd < 1)
 			return (brd);
 		nb = (nb * 10) + (*str - '0');
-		i++;
+		str++;
 	}
 	return (nb * mult);
 }
