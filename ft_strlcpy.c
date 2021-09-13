@@ -2,16 +2,16 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
+	const size_t	srclen = ft_strlen(src);
 
-	i = 0;
-	while (src[i] && i + 1 < size)
+	if (srclen + 1 < size)
 	{
-		dst[i] = src[i];
-		i++;
+		ft_memcpy(dst, src, srclen + 1);
 	}
-	dst[i] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	else if (size != 0)
+	{
+		ft_memcpy(dst, src, size - 1);
+		dst[size - 1] = '\0';
+	}
+	return (srclen);
 }
