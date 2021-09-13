@@ -11,11 +11,11 @@
 # define MIN(a, b) (((a) < (b)) ? (a) : (b))
 # define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}					t_list;
+}	t_list;
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
