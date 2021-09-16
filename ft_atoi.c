@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 17:27:44 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/13 17:27:44 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/16 12:39:12 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static int	ft_isspace(int c)
 	return ((c >= 9 && c <= 13) || (c == 32));
 }
 
-static int	ft_long_border(const char c, int mult, unsigned long nb)
+static int	ft_long_border(const char c, int mult, long nb)
 {
-	unsigned long	border;
+	long	border;
 
 	border = 922337203685477580;
 	if ((nb > border || (nb == border && (c - '0') > 7)) && mult == 1)
@@ -31,28 +31,26 @@ static int	ft_long_border(const char c, int mult, unsigned long nb)
 
 int	ft_atoi(const char *str)
 {
-	int				mult;
-	unsigned long	nb;
-	int				brd;
+	long	num;
+	int		sign;
+	int		brd;
 
-	mult = 1;
-	nb = 0;
+	num = 0;
+	sign = 1;
 	brd = 1;
 	while (ft_isspace(*str))
 		str++;
-	while (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			mult *= -1;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
 		str++;
-	}
-	while (ft_isdigit(*str))
+	while (*str && ft_isdigit(*str))
 	{
-		brd = ft_long_border(*str, mult, nb);
+		brd = ft_long_border(*str, sign, num);
 		if (brd < 1)
 			return (brd);
-		nb = (nb * 10) + (*str - '0');
+		num = (num * 10) + (*str - '0');
 		str++;
 	}
-	return (nb * mult);
+	return (num * sign);
 }
