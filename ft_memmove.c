@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 17:27:44 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/16 10:52:18 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/16 11:03:53 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,13 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		return (dst);
 	if (d <= s)
 		return (ft_memcpy(dst, src, len));
-	s += len;
 	d += len;
+	s += len;
 	while (len--)
-		*--d = *--s;
+	{
+		d--;
+		s--;
+		*d = *s;
+	}
 	return (dst);
 }
