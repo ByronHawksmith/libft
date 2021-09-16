@@ -6,16 +6,11 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 17:27:44 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/16 12:39:12 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/16 12:48:56 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_isspace(int c)
-{
-	return ((c >= 9 && c <= 13) || (c == 32));
-}
 
 static int	ft_long_border(const char c, int mult, long nb)
 {
@@ -38,7 +33,7 @@ int	ft_atoi(const char *str)
 	num = 0;
 	sign = 1;
 	brd = 1;
-	while (ft_isspace(*str))
+	while (IS_WSPACE(*str))
 		str++;
 	if (*str == '-')
 		sign = -1;
