@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 17:27:45 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/16 16:08:01 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/16 16:09:03 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,5 @@ size_t	ft_str_bound(
 			char step
 			);
 size_t	ft_strlendel(char const *s, char c);
-size_t	ft_count_strings(char const *str, char c)
+size_t	ft_count_strings(char const *str, char c);
 #endif
