@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bhawksmi <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/09/16 13:57:12 by bhawksmi          #+#    #+#              #
+#    Updated: 2021/09/16 13:57:12 by bhawksmi         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		= libft.a
 CFLAGS		= -Wall -Werror -Wextra -I. -c
 FILES		= *.c
@@ -24,7 +36,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: all
 
 # Use .PHONY to make sure that gnu make will still run even if files called
 # clean / fclean / all and re already exist in the directory
