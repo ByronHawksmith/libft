@@ -6,7 +6,7 @@
 #    By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/16 14:01:25 by bhawksmi          #+#    #+#              #
-#    Updated: 2021/09/16 14:01:25 by bhawksmi         ###   ########.fr        #
+#    Updated: 2021/09/16 14:14:22 by bhawksmi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ all: $(NAME)
 copy:
 	cp -f libc-funcs/*.c .
 	cp -f additional-funcs/*.c .
+	cp -f personal-funcs/*.c .
 
 # This won't run if the .o files don't exist or are not modified
 $(NAME): $(OBJ)
