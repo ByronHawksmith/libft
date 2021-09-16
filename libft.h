@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 17:27:45 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/16 14:22:40 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:29:58 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-int ft_str_contains(char c, const char *set);
-size_t ft_str_bound(const char *str, const char *set, size_t length, char step);
+int		ft_str_contains(char c, const char *set);
+size_t	ft_str_bound(
+			const char *str,
+			const char *set,
+			size_t length,
+			char step
+			);
 #endif
