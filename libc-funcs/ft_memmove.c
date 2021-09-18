@@ -17,8 +17,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	char		*d;
 	const char	*s;
 
-	if (dst == NULL && src == NULL)
-		return (NULL);
+	CHECK_PTR(dst);
+	CHECK_PTR(src);
 	d = dst;
 	s = src;
 	if (len == 0)
@@ -27,8 +27,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		return (ft_memcpy(dst, src, len));
 	d += len;
 	s += len;
-	while (len--)
+	while (len)
 	{
+		len--;
 		d--;
 		s--;
 		*d = *s;
