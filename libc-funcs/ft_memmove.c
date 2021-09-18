@@ -12,6 +12,30 @@
 
 #include "libft.h"
 
+static void	*front(void *dst, char *d, const char *s, size_t len)
+{
+	while (len)
+	{
+		*d = *s;
+		d++;
+		s++;
+		len--;
+	}
+	return (dst);
+}
+
+static void	*back(void *dst, char *d, const char *s, size_t len)
+{
+	while (len)
+	{
+		len--;
+		d--;
+		s--;
+		*d = *s;
+	}
+	return (dst);
+}
+
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	char		*d;
@@ -22,22 +46,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	d = dst;
 	s = src;
 	if (d <= s)
-		while (len)
-		{
-			*d = *s;
-			d++;
-			s++;
-			len--;
-		}
+		return (front(dst, d, s, len));
 	d += len;
 	s += len;
-	if (d > s)
-		while (len)
-		{
-			len--;
-			d--;
-			s--;
-			*d = *s;
-		}
-	return (dst);
+	return (back(dst, d, s, len));
 }
