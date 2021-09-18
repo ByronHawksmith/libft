@@ -21,18 +21,23 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	CHECK_PTR(src);
 	d = dst;
 	s = src;
-	if (len == 0)
-		return (dst);
 	if (d <= s)
-		return (ft_memcpy(dst, src, len));
+		while (len)
+		{
+			*d = *s;
+			d++;
+			s++;
+			len--;
+		}
 	d += len;
 	s += len;
-	while (len)
-	{
-		len--;
-		d--;
-		s--;
-		*d = *s;
-	}
+	if (d > s)
+		while (len)
+		{
+			len--;
+			d--;
+			s--;
+			*d = *s;
+		}
 	return (dst);
 }
