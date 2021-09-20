@@ -6,7 +6,7 @@
 #    By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/16 14:01:25 by bhawksmi          #+#    #+#              #
-#    Updated: 2021/09/20 19:19:25 by bhawksmi         ###   ########.fr        #
+#    Updated: 2021/09/20 19:30:41 by bhawksmi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,12 +44,7 @@ SRCS	=	ft_atoi.c \
 				ft_strjoin.c \
 				ft_strmapi.c \
 				ft_strtrim.c \
-				ft_substr.c \
-				ft_count_strings.c \
-				ft_str_bound.c \
-				ft_str_contains.c \
-				ft_strlendel.c \
-				ft_strnew.c
+				ft_substr.c
 SRCS_B	=	ft_lstadd_back.c \
 				ft_lstadd_front.c \
 				ft_lstclear.c \
