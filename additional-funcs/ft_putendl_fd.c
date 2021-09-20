@@ -6,8 +6,14 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:02:28 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/16 14:02:28 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/20 14:45:22 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+void	ft_putendl_fd(char *s, int fd)
+{
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
+}
