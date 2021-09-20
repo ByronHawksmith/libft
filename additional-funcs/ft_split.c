@@ -6,11 +6,24 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:02:28 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/16 16:53:36 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/20 19:20:12 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static size_t	ft_strlendel(char const *s, char c)
+{
+	size_t	str_len;
+
+	str_len = 0;
+	while (*s && *s != c)
+	{
+		str_len++;
+		s++;
+	}
+	return (str_len);
+}
 
 char	**ft_split(char const *s, char c)
 {
