@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 16:04:07 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/16 16:04:07 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/20 15:11:51 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlendel(char const *s, char c)
 {
-	size_t str_len;
+	size_t	str_len;
 
 	str_len = 0;
 	while (*s && *s != c)
