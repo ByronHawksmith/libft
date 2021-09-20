@@ -6,11 +6,22 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:02:29 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/20 19:53:01 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/20 19:57:48 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ft_str_contains(char c, const char *set)
+{
+	while (*set)
+	{
+		if (*set == c)
+			return (1);
+		set++;
+	}
+	return (0);
+}
 
 static size_t	ft_str_bound(
 	const char *str,
