@@ -6,11 +6,21 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:02:29 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/20 13:58:44 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/20 20:00:03 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char	*ft_strnew(size_t size)
+{
+	char	*str;
+
+	str = (char *) malloc((size + 1) * sizeof(char));
+	CHECK_PTR(str);
+	ft_bzero(str, size + 1);
+	return (str);
+}
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
