@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:20:48 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/20 16:40:32 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/22 18:53:40 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*list;
 
-	CHECK_MALLOC(list, sizeof(t_list));
+	list = malloc(sizeof(t_list));
+	if (!list)
+		return (NULL);
 	list->content = content;
 	list->next = NULL;
 	return (list);

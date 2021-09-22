@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:02:29 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/20 19:57:48 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/22 18:51:27 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*ret;
 
-	CHECK_PTR(s1);
-	CHECK_PTR(set);
+	if (!s1 || !set)
+		return (NULL);
 	length = ft_strlen(s1);
 	start = ft_str_bound(s1, set, length, 1);
 	end = ft_str_bound(s1, set, length, -1);
@@ -65,7 +65,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 		length = end - start + 1;
 	if (length <= 0)
 		return (ft_strdup(""));
-	CHECK_MALLOC(ret, (length + 1) * sizeof(char));
+	ret = malloc((length + 1) * sizeof(char));
+	if (!ret)
+		return (NULL);
 	ft_memcpy(ret, s1 + start, length);
 	ret[length] = '\0';
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 17:27:45 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/16 11:47:08 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/22 18:54:04 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s1)
 	char	*dup;
 
 	len = ft_strlen(s1) + 1;
-	CHECK_MALLOC(dup, len);
+	dup = malloc(len);
+	if (!dup)
+		return (NULL);
 	return ((char *) ft_memcpy(dup, s1, len));
 }

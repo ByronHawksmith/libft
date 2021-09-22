@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:20:48 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/20 17:20:12 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/22 17:55:26 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*list;
 
-	CHECK_PTR(lst);
+	if (!lst)
+		return (NULL);
 	list = ft_lstnew(f(lst->content));
 	if (!list)
 	{

@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 13:21:29 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/20 20:04:42 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/22 17:53:07 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static char	*ft_strnew(size_t size)
 	char	*str;
 
 	str = (char *) malloc((size + 1) * sizeof(char));
-	CHECK_PTR(str);
+	if (!str)
+		return (NULL);
 	ft_bzero(str, size + 1);
 	return (str);
 }
@@ -50,7 +51,8 @@ char	*ft_itoa(int n)
 		str_len++;
 	}
 	str = ft_strnew(str_len);
-	CHECK_PTR(str);
+	if (!str)
+		return (NULL);
 	str[--str_len] = n_cpy % 10 + '0';
 	while (n_cpy)
 	{

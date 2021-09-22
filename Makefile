@@ -6,7 +6,7 @@
 #    By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/16 14:01:25 by bhawksmi          #+#    #+#              #
-#    Updated: 2021/09/20 19:30:41 by bhawksmi         ###   ########.fr        #
+#    Updated: 2021/09/22 18:55:35 by bhawksmi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,4 +83,4 @@ fclean: clean
 re: fclean all bonus
 
 # Use .PHONY to make sure that gnu make will still run even if files with these names are present
-.PHONY: all copy bonus clean fclean re
+.PHONY: all bonus clean fclean re
