@@ -6,7 +6,7 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:02:28 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/22 19:21:19 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/22 20:56:56 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,19 @@ char	**ft_split(char const *s, char c)
 	str_arr = malloc((ft_count_strings(s, c) + 1) * sizeof(char *));
 	if (!str_arr)
 		return (NULL);
-	while (*s && idx++)
+	while (*s)
 	{
 		str_len = ft_strlendel(s, c);
 		if (str_len)
 		{
-			str_arr[idx - 1] = malloc((str_len + 1) * sizeof(char));
-			if (ft_memcpy(str_arr[idx - 1], s, str_len) == NULL)
+			str_arr[idx] = malloc((str_len + 1) * sizeof(char));
+			if (ft_memcpy(str_arr[idx], s, str_len) == NULL)
 				return (NULL);
-			str_arr[idx - 1][str_len] = '\0';
-			s += str_len;
+			str_arr[idx++][str_len] = '\0';
+			s += str_len - 1;
 		}
+		s++;
 	}
-	str_arr[idx - 1] = NULL;
+	str_arr[idx] = NULL;
 	return (str_arr);
 }
