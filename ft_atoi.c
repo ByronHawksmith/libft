@@ -12,6 +12,11 @@
 
 #include "libft.h"
 
+static int	ft_iswspace(int c)
+{
+	return ((c >= 9 && c <= 13) || (c == 32));
+}
+
 static int	ft_long_border(const char c, int mult, long nb)
 {
 	long	border;
@@ -33,7 +38,7 @@ int	ft_atoi(const char *str)
 	num = 0;
 	sign = 1;
 	brd = 1;
-	while (IS_WSPACE(*str))
+	while (ft_iswspace(*str))
 		str++;
 	if (*str == '-')
 		sign = -1;
