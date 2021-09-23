@@ -3,3 +3,4 @@
 *.o
 *.a
 FT_SPLIT_TESTER
+libftTester
