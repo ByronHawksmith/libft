@@ -12,6 +12,20 @@
 
 #include "libft.h"
 
+static char	*ft_strncpy(char *dst, const char *src, size_t n)
+{
+	if (!dst || !src)
+		return (dst);
+	while (n && *src)
+	{
+		*dst = *src;
+		dst++;
+		src++;
+		n--;
+	}
+	return (dst);
+}
+
 static size_t	ft_strnlen(const char *str, size_t n)
 {
 	size_t	i;
@@ -35,7 +49,7 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 	substr = malloc((str_len + 1) * sizeof(char));
 	if (!substr)
 		return (NULL);
-	ft_memcpy(substr, (str + start), str_len);
+	ft_strncpy(substr, (str + start), str_len);
 	substr[str_len] = '\0';
 	return (substr);
 }
