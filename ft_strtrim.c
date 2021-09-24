@@ -12,39 +12,32 @@
 
 #include "libft.h"
 
-static int	ft_str_contains(char c, const char *set)
+int	ft_getstart(const char *s1, const char *set, size_t len)
 {
-	while (*set)
+	size_t	i;
+
+	i = 0;
+	while (i < len)
 	{
-		if (*set == c)
-			return (1);
-		set++;
+		if (ft_strchr(set, s1[i]) == 0)
+			break ;
+		i++;
 	}
-	return (0);
+	return (i);
 }
 
-static size_t	ft_str_bound(
-	const char *str,
-	const char *set,
-	size_t length,
-	char step
-)
+int	ft_getend(const char *s1, const char *set, size_t len)
 {
-	size_t	idx;
-	size_t	bound_idx;
+	size_t	i;
 
-	bound_idx = 0;
-	while (bound_idx < length)
+	i = 0;
+	while (i < len)
 	{
-		if (step < 0)
-			idx = length - 1 - bound_idx;
-		else if (step >= 0)
-			idx = bound_idx;
-		if (!ft_str_contains(str[idx], set))
-			return (idx);
-		bound_idx++;
+		if (ft_strchr(set, s1[len - i - 1]) == 0)
+			break ;
+		i++;
 	}
-	return (bound_idx);
+	return (len - i);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -54,21 +47,18 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*ret;
 
-	if (!s1 || !set)
+	if (!s1)
 		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
 	length = ft_strlen(s1);
-	start = ft_str_bound(s1, set, length, 1);
-	end = ft_str_bound(s1, set, length, -1);
-	if (start > end)
-		length = 0;
-	else
-		length = end - start + 1;
-	if (length <= 0)
+	start = ft_getstart(s1, set, length);
+	end = ft_getend(s1, set, length);
+	if (start >= end)
 		return (ft_strdup(""));
-	ret = malloc((length + 1) * sizeof(char));
+	ret = malloc((end - start + 1) * sizeof(char));
 	if (!ret)
 		return (NULL);
-	ft_memcpy(ret, s1 + start, length);
-	ret[length] = '\0';
+	ft_strlcpy(ret, s1 + start, end - start + 1);
 	return (ret);
 }
