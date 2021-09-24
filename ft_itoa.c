@@ -12,54 +12,52 @@
 
 #include "libft.h"
 
-static char	*ft_strnew(size_t size)
+long	ft_abs(long nbr)
 {
-	char	*str;
-
-	str = (char *) malloc((size + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	ft_bzero(str, size + 1);
-	return (str);
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
 }
 
-static size_t	ft_intlen(int n)
+int	ft_nbrlen(long nbr)
 {
-	size_t		i;
+	int	len;
 
-	i = 1;
-	while (n)
+	if (nbr <= 0)
+		len = 1;
+	else
+		len = 0;
+	while (nbr != 0)
 	{
-		n /= 10;
-		if (n)
-			i++;
+		nbr = nbr / 10;
+		len++;
 	}
-	return (i);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*str;
-	size_t			str_len;
-	unsigned int	n_cpy;
+	int		len;
+	int		sign;
+	char	*c;
 
-	str_len = ft_intlen(n);
-	n_cpy = n;
 	if (n < 0)
+		sign = -1;
+	else
+		sign = 1;
+	len = ft_nbrlen(n);
+	c = malloc((len + 1) * sizeof(char));
+	if (c == NULL)
+		return (0);
+	c[len] = '\0';
+	len--;
+	while (len >= 0)
 	{
-		n_cpy = -n;
-		str_len++;
+		c[len] = '0' + ft_abs(n % 10);
+		n = ft_abs(n / 10);
+		len--;
 	}
-	str = ft_strnew(str_len);
-	if (!str)
-		return (NULL);
-	str[--str_len] = n_cpy % 10 + '0';
-	while (n_cpy)
-	{
-		n_cpy /= 10;
-		str[--str_len] = n_cpy % 10 + '0';
-	}
-	if (n < 0)
-		*str = '-';
-	return (str);
+	if (sign == -1)
+		c[0] = '-';
+	return (c);
 }
