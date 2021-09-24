@@ -23,10 +23,9 @@ int	ft_nbrlen(long nbr)
 {
 	int	len;
 
+	len = 0;
 	if (nbr <= 0)
 		len = 1;
-	else
-		len = 0;
 	while (nbr != 0)
 	{
 		nbr = nbr / 10;
@@ -37,14 +36,13 @@ int	ft_nbrlen(long nbr)
 
 char	*ft_itoa(int n)
 {
-	int		len;
 	int		sign;
+	int		len;
 	char	*c;
 
+	sign = 1;
 	if (n < 0)
 		sign = -1;
-	else
-		sign = 1;
 	len = ft_nbrlen(n);
 	c = malloc((len + 1) * sizeof(char));
 	if (c == NULL)
