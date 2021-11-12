@@ -6,11 +6,39 @@
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:02:29 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/16 14:12:29 by bhawksmi         ###   ########.fr       */
+/*   Updated: 2021/09/22 18:51:27 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_getstart(const char *s1, const char *set, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		if (ft_strchr(set, s1[i]) == 0)
+			break ;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_getend(const char *s1, const char *set, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		if (ft_strchr(set, s1[len - i - 1]) == 0)
+			break ;
+		i++;
+	}
+	return (len - i);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -19,19 +47,18 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*ret;
 
-	CHECK_PTR(s1);
-	CHECK_PTR(set);
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
 	length = ft_strlen(s1);
-	start = ft_str_bound(s1, set, length, 1);
-	end = ft_str_bound(s1, set, length, -1);
-	if (start > end)
-		length = 0;
-	else
-		length = end - start + 1;
-	if (length <= 0)
+	start = ft_getstart(s1, set, length);
+	end = ft_getend(s1, set, length);
+	if (start >= end)
 		return (ft_strdup(""));
-	CHECK_MALLOC(ret, (length + 1) * sizeof(char));
-	ft_memcpy(ret, s1 + start, length);
-	ret[length] = '\0';
+	ret = malloc((end - start + 1) * sizeof(char));
+	if (!ret)
+		return (NULL);
+	ft_strlcpy(ret, s1 + start, end - start + 1);
 	return (ret);
 }

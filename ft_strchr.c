@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,16 +12,20 @@
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strchr(const char *s, int c)
 {
-	const size_t	src_len = ft_strlen(src);
+	char	*str;
+	char	chr;
 
-	if (src_len + 1 < size)
-		ft_memcpy(dst, src, src_len + 1);
-	else if (size != 0)
+	str = (char *) s;
+	chr = (char) c;
+	while (*str)
 	{
-		ft_memcpy(dst, src, size - 1);
-		dst[size - 1] = '\0';
+		if (*str == chr)
+			return (str);
+		str++;
 	}
-	return (src_len);
+	if (*str == chr)
+		return (str);
+	return (NULL);
 }

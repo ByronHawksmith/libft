@@ -6,13 +6,12 @@
 #    By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/16 14:01:25 by bhawksmi          #+#    #+#              #
-#    Updated: 2021/09/20 17:54:22 by bhawksmi         ###   ########.fr        #
+#    Updated: 2021/09/22 18:55:35 by bhawksmi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libft.a
-CFLAGS		= -Wall -Werror -Wextra -I. -c
-FILES		= ft_atoi.c \
+NAME	= libft.a
+SRCS	=	ft_atoi.c \
 				ft_bzero.c \
 				ft_calloc.c \
 				ft_isalnum.c \
@@ -45,8 +44,8 @@ FILES		= ft_atoi.c \
 				ft_strjoin.c \
 				ft_strmapi.c \
 				ft_strtrim.c \
-				ft_substr.c \
-				ft_lstadd_back.c \
+				ft_substr.c
+SRCS_B	=	ft_lstadd_back.c \
 				ft_lstadd_front.c \
 				ft_lstclear.c \
 				ft_lstdelone.c \
@@ -54,39 +53,34 @@ FILES		= ft_atoi.c \
 				ft_lstlast.c \
 				ft_lstmap.c \
 				ft_lstnew.c \
-				ft_lstsize.c \
-				ft_count_strings.c \
-				ft_str_bound.c \
-				ft_str_contains.c \
-				ft_strlendel.c \
-				ft_strnew.c
-OBJ			= $(FILES:%.c=%.o)
+				ft_lstsize.c
+OBJS	= $(SRCS:%.c=%.o)
+OBJS_B	= $(SRCS_B:%.c=%.o)
+FLAGS	= -Wall -Werror -Wextra -I. -c
+
+# This won't run if the .o files don't exist or are not modified
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
+# This won't run if the source files don't exist or are not modified
+$(OBJS): $(SRCS)
+	gcc $(FLAGS) $(SRCS)
+
+$(OBJS_B): $(SRCS_B)
+	gcc $(FLAGS) $(SRCS_B)
 
 all: $(NAME)
 
-copy:
-	cp -f libc-funcs/*.c .
-	cp -f additional-funcs/*.c .
-	cp -f personal-funcs/*.c .
-	cp -f bonus-funcs/*.c .
-
-# This won't run if the .o files don't exist or are not modified
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
-
-# This won't run if the source files don't exist or are not modified
-$(OBJ): $(FILES)
-	gcc $(CFLAGS) $(FILES)
+bonus: $(NAME) $(OBJS_B)
+	ar rcs $(NAME) $(OBJS_B)
 
 clean:
-	rm -f $(OBJ)
-	rm -f $(FILES)
+	rm -f $(OBJS) $(OBJS_B)
 
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean all bonus
 
-# Use .PHONY to make sure that gnu make will still run even if files called
-# clean / fclean / all and re already exist in the directory
-.PHONY: clean fclean all re
+# Use .PHONY to make sure that gnu make will still run even if files with these names are present
+.PHONY: all bonus clean fclean re

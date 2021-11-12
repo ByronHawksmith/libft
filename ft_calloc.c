@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 18:19:55 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/16 10:39:53 by bhawksmi         ###   ########.fr       */
+/*   Created: 2021/09/13 17:27:44 by bhawksmi          #+#    #+#             */
+/*   Updated: 2021/09/22 18:53:09 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *str, unsigned int start, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*substr;
-	size_t	str_len;
-	size_t	idx;
+	void	*arr;
+	size_t	req;
 
-	CHECK_PTR(str);
-	str_len = ft_strlen(str);
-	CHECK_MALLOC(substr, (len * sizeof(char)) + 1);
-	idx = 0;
-	while (idx < len && idx + start < str_len)
-	{
-		substr[idx] = str[start + idx];
-		idx++;
-	}
-	substr[idx] = '\0';
-	return (substr);
+	req = count * size;
+	arr = malloc(req);
+	if (!arr)
+		return (NULL);
+	ft_memset(arr, 0, req);
+	return (arr);
 }

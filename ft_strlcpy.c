@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhawksmi <bhawksmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 15:20:48 by bhawksmi          #+#    #+#             */
-/*   Updated: 2021/09/20 17:20:12 by bhawksmi         ###   ########.fr       */
+/*   Created: 2021/09/13 17:27:45 by bhawksmi          #+#    #+#             */
+/*   Updated: 2021/09/13 17:27:45 by bhawksmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_list	*list;
+	size_t	src_len;
+	size_t	i;
 
-	CHECK_PTR(lst);
-	list = ft_lstnew(f(lst->content));
-	if (!list)
+	src_len = ft_strlen(src);
+	i = 0;
+	if (!size)
+		return (src_len);
+	while (src[i] && i < (size - 1))
 	{
-		ft_lstclear(&list, del);
-		return (NULL);
+		dst[i] = src[i];
+		i++;
 	}
-	list->next = ft_lstmap(lst->next, f, del);
-	return (list);
+	dst[i] = '\0';
+	return (src_len);
 }
